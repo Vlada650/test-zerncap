@@ -1,8 +1,8 @@
 import React from 'react'
 
-export default function EditForm({ persons, setShowEdit, value, setValue, setItalic, loadModes }) {
+export default function EditForm({ users, setShowEdit, value, setValue, setItalic, updateUser, deleteUser }) {
 
-    //const id = persons.id;
+    const id = users.id;
     const onSearchChange = (e) => {
         setValue({ ...value, [e.target.name]: e.target.value });
     }
@@ -10,66 +10,24 @@ export default function EditForm({ persons, setShowEdit, value, setValue, setIta
     const cancelFunc = () => {
         setShowEdit(false);
         setValue({
-            name: persons.name,
-            email: persons.email,
-            website: persons.website,
-            company: persons.company.name,
-            id: persons.id
+            name: users.name,
+            email: users.email,
+            website: users.website,
+            company: users.company.name,
+            id: users.id
         })
     }
 
     const updateFunc = () => {
-        //updateUser();
+        updateUser(id, value);
         setItalic(true);
         setShowEdit(false);
     }
 
     const deleteFunc = () => {
-        //deleteUser();
+        deleteUser(id);
         setShowEdit(false);
     }
-
-    /*const updateUser = () => {
-        debugger
-        fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {
-            method: 'PUT',
-            headers: {
-                'Content-type': 'application/json;charset=utf-8'
-            },
-            body: JSON.stringify({
-                name: value.name,
-                email: value.email,
-                website: value.website,
-                company: {
-                    name: value.company,
-                }
-            })
-        })
-            .then(response => {  
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    throw new Error('Что-то пошло не так');
-                }
-                //console.log('edited')
-            })
-            .then(loadModes)
-    }*/
-    /*const deleteUser = () => {
-        fetch(`https://jsonplaceholder.typicode.com/users/${id}/`, {
-            method: 'DELETE',
-            headers: {
-                'Content-type': 'application/json;charset=utf-8'
-            }
-        })
-            .then(response => {
-                if (response.ok) {
-                    console.log('removed');
-                } else {
-                    throw new Error('Что-то пошло не так');
-                }
-            })
-    };*/
 
     return (
         <>

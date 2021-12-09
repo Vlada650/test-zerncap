@@ -1,50 +1,25 @@
 import './App.css';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import MainPage from './components/MainPage';
 import './styles/styles.css';
+import { observer, inject } from "mobx-react";
 
-function App() {
-
-  const [persons, setPersones] = useState([]);
-  const [isFetching, setFething] = useState(false);
+const App = inject(['AppStore'])(observer(({ AppStore }) => {
 
   useEffect(() => {
-    loadModes();
+    AppStore.loadData();
   }, []);
 
-  function loadModes() {
-    setFething(true)
-    fetch('https://jsonplaceholder.typicode.com/users', {
-      method: 'GET',
-      headers: {
-        'Content-type': 'application/json;charset=utf-8'
-      }
-    })
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error('Something went wrong');
-        }
-      })
-      .then(response => {
-        setPersones(response);
-      })
-      .catch(err => console.log('Failed to fetch'))
-      .finally(fin => setFething(false))
-  }
-
-
-  if (isFetching) {
+  if (AppStore.isFetching) {
     return <p>Loading... Please, wait</p>
   }
 
   return (
     <>
-      <MainPage persons={persons} loadModes={loadModes} />
+      <MainPage users={AppStore.users} />
     </>
   );
 
-}
+}))
 
 export default App;

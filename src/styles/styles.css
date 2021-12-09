@@ -29,8 +29,9 @@
 
 .table__cell_numb,
 .table__cell_site,
+.table__cell_btn,
 .table__cell{
-    border: 1px solid rgb(7, 2, 53);
+    border: 1px solid rgb(243, 107, 107);
     height: 30px;
     padding-left: 5px;
     padding-right: 5px;
@@ -41,23 +42,25 @@
     width: 30px;
 }
 
-.table__cell_site{
+.table__cell_site,
+.table__cell_btn {
     width: 100px;
 }
 
 .table__button{
     border-radius: 25px;
-    border: none;
+    border: 1px solid rgb(36, 35, 35);
     padding: 5px 10px;
     margin: 3px 5px;
     cursor: pointer;
-    background-color: rgb(197, 196, 196);
+    background-color: #ffffff;
 }
 
 .table__button:hover,
-.add__buttons-btn:hover {
-    background-color: brown;
-    color: white;
+.add__buttons-btn:hover,
+.main__button:hover {
+    background-color: #a52a2a;
+    color: #ffffff;
 }
 
 .table{

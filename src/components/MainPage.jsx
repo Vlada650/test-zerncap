@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import Table from './Table';
 import AddNewUser from './AddNewUser.jsx';
+import { observer, inject } from "mobx-react";
 
-export default function MainPage({ persons, loadModes }) {
+const MainPage = inject(['AppStore'])(observer(({ AppStore, users }) => {
 
     const [showAdd, setShowAdd] = useState(false);
 
@@ -18,16 +19,18 @@ export default function MainPage({ persons, loadModes }) {
                         <p className="main__header">Company name</p>
                     </div>
                     <div>
-                        {persons.map((persons) => {
+                        {users.map((users) => {
                             return (
-                                <Table key={persons.id} persons={persons} loadModes={loadModes} />)
+                                <Table key={users.id} users={users} />)
                         })}
                     </div>
                 </div>
                 <div className="main__btn-container">
                     <button className="main__button" onClick={() => setShowAdd(true)}>Add new user</button></div>
                 <div hidden={!showAdd} className='modal-add'>
-                    <AddNewUser setShowAdd={setShowAdd} onClick={() => setShowAdd(true)}></AddNewUser></div>
+                    <AddNewUser setShowAdd={setShowAdd} funcAddNew={AppStore.funcAddNew} onClick={() => setShowAdd(true)}></AddNewUser></div>
             </div>
         </div>)
-}
+}))
+
+export default MainPage;

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
-export default function AddNewUser({ setShowAdd }) {
+export default function AddNewUser({ setShowAdd, funcAddNew }) {
 
     const onChange = (e) => {
         setValue({ ...value, [e.target.name]: e.target.value });
@@ -38,8 +38,7 @@ export default function AddNewUser({ setShowAdd }) {
             website: '',
             company: ''
         })
-
-        //funcAddNew();
+        funcAddNew(value);
     }
 
     const validation = () => {
@@ -57,44 +56,7 @@ export default function AddNewUser({ setShowAdd }) {
         }
         else (setDisabled(true))
     }
-    /*const funcAddNew = () => {
-        fetch(`https://jsonplaceholder.typicode.com/users/`, {
-            method: 'POST',
-            headers: {
-                'Content-type': 'application/json;charset=utf-8'
-            },
-            body: JSON.stringify({
-                id: '',
-                name: value.name,
-                username: "",
-                email: value.email,
-                address: {
-                    street: "",
-                    suite: "",
-                    city: "",
-                    zipcode: "",
-                    geo: {
-                        lat: "",
-                        lng: ""
-                    }
-                },
-                phone: "",
-                website: value.website,
-                company: {
-                    name: value.company,
-                    catchPhrase: "",
-                    bs: ""
-                }
-            })onClick={funcAddNew}
-        })
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    throw new Error('Something went wrong...');
-                }
-            })
-        }*/
+
     return (<>
 
         <div className='add'>
