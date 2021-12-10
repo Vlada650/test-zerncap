@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
+import { observer, inject } from "mobx-react";
 import Table from './Table';
 import AddNewUser from './AddNewUser.jsx';
-import { observer, inject } from "mobx-react";
 
 const MainPage = inject(['AppStore'])(observer(({ AppStore, users }) => {
 
     const [showAdd, setShowAdd] = useState(false);
 
     return (
-        <div>
-            <div className="container">
-                <div className="main">
+        <main>
+            <div className="main">
+                <div className="main__container">
                     <div className="main__headline">
                         <p className="main__header_numb">Num</p>
                         <p className="main__header">Name</p>
@@ -26,11 +26,12 @@ const MainPage = inject(['AppStore'])(observer(({ AppStore, users }) => {
                     </div>
                 </div>
                 <div className="main__btn-container">
-                    <button className="main__button" onClick={() => setShowAdd(true)}>Add new user</button></div>
-                <div hidden={!showAdd} className='modal-add'>
-                    <AddNewUser setShowAdd={setShowAdd} funcAddNew={AppStore.funcAddNew} onClick={() => setShowAdd(true)}></AddNewUser></div>
+                    <button className="main__button btn" onClick={() => setShowAdd(true)}>Add new user</button></div>
             </div>
-        </div>)
+            <div hidden={!showAdd} className='modal-popup'>
+                <AddNewUser setShowAdd={setShowAdd} funcAddNew={AppStore.funcAddNew} onClick={() => setShowAdd(true)}></AddNewUser>
+            </div>
+        </main>)
 }))
 
 export default MainPage;

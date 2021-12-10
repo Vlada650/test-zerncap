@@ -16,20 +16,19 @@ const Table = inject(['AppStore'])(observer(({ AppStore, users }) => {
 
     return (
         <>
-            <div hidden={!showEdit} className='modal-edit'>
-                <EditForm users={users} value={value} setValue={setValue}
-                    deleteUser={AppStore.deleteUser} updateUser={AppStore.updateUser}
-                    setItalic={setItalic} setShowEdit={setShowEdit}></EditForm></div>
-            <tr className={italic ? "table edited" : 'table'}>
-                <td className="table__cell_numb">{value.id}</td>
-                <td className="table__cell">{value.name}</td>
-                <td className="table__cell">{value.email}</td>
-                <td className="table__cell">{value.website}</td>
-                <td className="table__cell">{value.company}</td>
-                <td className="table__cell_btn">
-                    <button className="table__button" onClick={() => setShowEdit(true)}>Edit</button>
-                </td>
-            </tr>
+            <div hidden={!showEdit} className='modal-popup'>
+                <EditForm users={users} value={value} setValue={setValue} deleteUser={AppStore.deleteUser}
+                    updateUser={AppStore.updateUser} setItalic={setItalic} setShowEdit={setShowEdit}></EditForm></div>
+            <div className={italic ? "table edited" : 'table'}>
+                <p className="table__cell_numb">{value.id}</p>
+                <p className="table__cell">{value.name}</p>
+                <p className="table__cell">{value.email}</p>
+                <p className="table__cell_site">{value.website}</p>
+                <p className="table__cell">{value.company}</p>
+                <p>
+                    <button className="buttons__small btn" onClick={() => setShowEdit(true)}>Edit</button>
+                </p>
+            </div>
         </>)
 
 }))
