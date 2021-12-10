@@ -5,6 +5,7 @@
 
 .main__container{
     margin: 50px 50px 10px;
+    width: 80vw;
 }
 
 .main__headline{ 
@@ -12,23 +13,18 @@
     grid-template-columns: 40px repeat(4, 250px);
     font-weight: 700;
     text-align: center;
+    height: 50px;
 }
 
 .main__header{
-    width: 100px;
+    width: 150px;
 }
 
 .main__header_numb{
     width: 40px;
 }
 
-.main__header_site{
-    width: 100px;
-    padding: 0px 20px;
-}
-
 .table{
-    width: 90vw;
     display: flex;
     flex-direction: row;
     height: 35px;

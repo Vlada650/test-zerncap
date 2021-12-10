@@ -15,7 +15,7 @@ const MainPage = inject(['AppStore'])(observer(({ AppStore, users }) => {
                         <p className="main__header_numb">Num</p>
                         <p className="main__header">Name</p>
                         <p className="main__header">Email</p>
-                        <p className="main__header_site">Website</p>
+                        <p className="main__header">Website</p>
                         <p className="main__header">Company name</p>
                     </div>
                     <div>
